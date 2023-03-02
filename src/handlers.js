@@ -1,11 +1,9 @@
-const pool = require("./db");
+const db = require("./db");
 
 // handlers.js
 exports.getDaftarTransaksi = async (req, res) => {
   try {
-    const conn = await pool.getConnection()
-    const [rows] = await pool.query('SELECT DATE_FORMAT(tanggal, ?) as tanggal, jenis, jumlah, keterangan FROM transaksi', ['%d-%m-%Y']);
-    conn.release()
+    const [rows] = await db('SELECT id, DATE_FORMAT(tanggal, ?) as tanggal, jenis, jumlah, keterangan FROM transaksi', ['%d-%m-%Y']);
     res.json(rows);
   } catch (err) {
     console.error(err);
@@ -16,9 +14,7 @@ exports.getDaftarTransaksi = async (req, res) => {
 exports.tambahTransaksi =  async (req, res) => {
   const { jenis, tanggal, jumlah, keterangan } = req.body;
   try {
-    const conn = await pool.getConnection()
-    await pool.query('INSERT INTO transaksi (jenis, tanggal, jumlah, keterangan) VALUES (?, ?, ?, ?)', [jenis, tanggal, jumlah, keterangan]);
-    conn.release()
+    await db('INSERT INTO transaksi (jenis, tanggal, jumlah, keterangan) VALUES (?, ?, ?, ?)', [jenis, tanggal, jumlah, keterangan]);
     res.status(201).json({ message: 'Transaksi berhasil ditambahkan' });
   } catch (err) {
     console.error(err);
@@ -29,9 +25,7 @@ exports.tambahTransaksi =  async (req, res) => {
 exports.hapusTransaksi = async (req, res) => {
   const { id } = req.params;
   try {
-    const conn = await pool.getConnection()
-    await pool.query('DELETE FROM transaksi WHERE id = ?', [id]);
-    conn.release()
+    await db('DELETE FROM transaksi WHERE id = ?', [id]);
     res.status(200).json({ message: 'Transaksi berhasil dihapus' });
   } catch (err) {
     console.error(err);

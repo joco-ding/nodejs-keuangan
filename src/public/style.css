@@ -9,7 +9,7 @@ h1 {
 	margin-bottom: 20px;
 }
 
-#transaction-form {
+#form-transaksi {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -22,13 +22,13 @@ h1 {
 	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-#transaction-form label {
+#form-transaksi label {
 	flex: 0 0 100px;
 	margin-right: 10px;
 	font-weight: bold;
 }
 
-#transaction-form input, #transaction-form select {
+#form-transaksi input, #form-transaksi select {
 	flex: 1 1 auto;
 	padding: 10px;
 	font-size: 16px;
@@ -37,7 +37,7 @@ h1 {
 	margin-right: 30px;
 }
 
-#transaction-form button[type="submit"] {
+#form-transaksi button[type="submit"] {
 	padding: 10px;
 	background-color: #007bff;
 	color: #fff;
@@ -69,40 +69,40 @@ h1 {
 	margin-right: 20px;
 }
 
-#transaction-table {
+#tabel-transaksi {
 	margin: 20px auto;
 	border-collapse: collapse;
 }
 
-#transaction-table th, #transaction-table td {
+#tabel-transaksi th, #tabel-transaksi td {
 	padding: 10px;
 	border: 1px solid #ccc;
 	text-align: center;
 }
 
-#transaction-table th {
+#tabel-transaksi th {
 	background-color: #f8f8f8;
 	font-weight: bold;
 }
 
-#transaction-table tbody tr:nth-child(even) {
+#tabel-transaksi tbody tr:nth-child(even) {
 	background-color: #f8f8f8;
 }
 
-#transaction-table tbody tr:hover {
+#tabel-transaksi tbody tr:hover {
 	background-color: #eee;
 }
 
-#transaction-table tfoot td {
+#tabel-transaksi tfoot td {
 	font-weight: bold;
 	background-color: #f8f8f8;
 }
 
-#transaction-table tfoot td:nth-child(2), #transaction-table tfoot td:nth-child(5) {
+#tabel-transaksi tfoot td:nth-child(2), #tabel-transaksi tfoot td:nth-child(5) {
 	text-align: right;
 }
 
-#balance {
+#saldo {
 	font-weight: bold;
 	font-size: 20px;
 	color: #007bff;
