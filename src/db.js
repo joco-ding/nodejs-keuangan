@@ -9,7 +9,7 @@ const pool = mysql.createPool({
   database: 'pengelolaan_keuangan'
 });
 
-module.exports = async (sql, values = []) => {
+exports.query = async (sql, values = []) => {
   try {
     const conn = await pool.getConnection()
     const rows = await conn.query(sql, values);
