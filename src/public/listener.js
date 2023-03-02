@@ -1,35 +1,34 @@
-
 document.addEventListener('DOMContentLoaded', function () {
-  getTransactions();
+  ambilTransaksi();
 });
 
 // Menambahkan event listener pada filter transaksi
-filter.addEventListener('change', function (event) {
+inputFilter.addEventListener('change', function (event) {
   const selectedValue = event.target.value;
   if (selectedValue === 'semua') {
-    updateTable();
+    updateTabel();
   } else if (selectedValue === 'pemasukan') {
-    const filteredTransactions = transactions.filter(transaction => transaction.jenis === 'pemasukan');
-    updateTableWithTransactions(filteredTransactions);
+    const transaksiTerfilter = transaksiTerfilter.filter(transaction => transaction.jenis === 'pemasukan');
+    updateTabeldenganTransaksi(transaksiTerfilter);
   } else if (selectedValue === 'pengeluaran') {
-    const filteredTransactions = transactions.filter(transaction => transaction.jenis === 'pengeluaran');
-    updateTableWithTransactions(filteredTransactions);
+    const transaksiTerfilter = daftarTransaksi.filter(transaction => transaction.jenis === 'pengeluaran');
+    updateTabeldenganTransaksi(transaksiTerfilter);
   }
 });
 
 // Menambahkan event listener pada kolom pencarian
-cari.addEventListener('input', function (event) {
+inputCari.addEventListener('input', function (event) {
   const keyword = event.target.value.toLowerCase();
-  const filteredTransactions = transactions.filter(transaction => {
+  const filteredTransactions = daftarTransaksi.filter(transaction => {
     const keterangan = transaction.keterangan.toLowerCase();
     const jenis = transaction.jenis === 'pemasukan' ? 'pemasukan' : 'pengeluaran';
     return keterangan.includes(keyword) || jenis.includes(keyword);
   });
-  updateTableWithTransactions(filteredTransactions);
+  updateTabeldenganTransaksi(filteredTransactions);
 });
 
 // Menambahkan event listener pada form
-form.addEventListener('submit', function (event) {
+formTransaksi.addEventListener('submit', function (event) {
   event.preventDefault();
   const jenis = inputJenis.value;
   const keterangan = inputKeterangan.value.trim();
@@ -40,5 +39,5 @@ form.addEventListener('submit', function (event) {
     return;
   }
   tambahTransaksi({ jenis, keterangan, jumlah, tanggal });
-  form.reset();
+  formTransaksi.reset();
 });

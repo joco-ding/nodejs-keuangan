@@ -9,37 +9,21 @@ h1 {
 	margin-bottom: 20px;
 }
 
-#form-transaksi {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 20px;
-	padding: 20px;
-	background-color: #f8f8f8;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+#tabel-transaksi input, #tabel-transaksi select {
+  width: 100%;
+  padding: 8px 20px;
+  font-size: 16px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
 }
 
-#form-transaksi label {
-	flex: 0 0 100px;
-	margin-right: 10px;
-	font-weight: bold;
-}
-
-#form-transaksi input, #form-transaksi select {
-	flex: 1 1 auto;
+#tabel-transaksi button[type="submit"] {
 	padding: 10px;
-	font-size: 16px;
-	border: none;
-	border-bottom: 2px solid #ccc;
-	margin-right: 30px;
-}
-
-#form-transaksi button[type="submit"] {
-	padding: 10px;
-	background-color: #007bff;
+	background-color: #007bff !important;
 	color: #fff;
 	border: none;
 	font-size: 16px;

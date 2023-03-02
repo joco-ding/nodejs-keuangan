@@ -1,5 +1,5 @@
 // Mendapatkan referensi elemen HTML
-const form = document.querySelector('#form-transaksi');
+const formTransaksi = document.querySelector('#form-transaksi');
 const inputJenis = document.querySelector('#jenis');
 const inputKeterangan = document.querySelector('#keterangan');
 const inputJumlah = document.querySelector('#jumlah');
@@ -8,38 +8,40 @@ const bodiTabel = document.querySelector('#tabel-transaksi tbody');
 const elemenSaldo = document.querySelector('#saldo');
 const elementotalPemasukan = document.querySelector('#total-pemasukan');
 const elementotalPengeluaran = document.querySelector('#total-pengeluaran');
-const filter = document.querySelector('#filter');
-const cari = document.querySelector('#cari');
+const inputFilter = document.querySelector('#filter');
+const inputCari = document.querySelector('#cari');
 
 
 // Mendefinisikan variabel global
-let transactions = [];
+let daftarTransaksi = [];
 
 // Mengupdate tampilan tabel transaksi
-function updateTable() {
+function updateTabel() {
   bodiTabel.innerHTML = '';
-  for (let i = 0; i < transactions.length; i++) {
-    const transaction = transactions[i];
-    const row = document.createElement('tr');
-    row.innerHTML = `
-			<td>${transaction.jenis === 'pemasukan' ? 'Pemasukan' : 'Pengeluaran'}</td>
-			<td>${transaction.keterangan}</td>
-			<td>Rp ${parseFloat(transaction.jumlah).toLocaleString()}</td>
-			<td>${transaction.tanggal}</td>
-			<td><button onclick="deleteTransaction(${transaction.id})">Hapus</button></td>
+  const opsitanggal = { year: 'numeric', month: 'long', day: 'numeric' };
+  for (let i = 0; i < daftarTransaksi.length; i++) {
+    const transaksi = daftarTransaksi[i];
+    const tanggal = new Date(transaksi.tanggal)
+    const baris = document.createElement('tr');
+    baris.innerHTML = `
+			<td>${transaksi.jenis === 'pemasukan' ? 'Pemasukan' : 'Pengeluaran'}</td>
+			<td>${transaksi.keterangan}</td>
+			<td>Rp ${parseFloat(transaksi.jumlah).toLocaleString()}</td>
+			<td>${tanggal.toLocaleDateString('id-ID', opsitanggal)}</td>
+			<td><button onclick="hapusTransaksi(${transaksi.id})">Hapus</button></td>
 		`;
-    bodiTabel.appendChild(row);
+    bodiTabel.appendChild(baris);
   }
 }
 
 // Mengupdate tampilan saldo dan total pemasukan/pengeluaran
-function updateBalance() {
+function updateSaldo() {
   let totalPemasukan = 0;
   let totalPengeluaran = 0;
-  for (let i = 0; i < transactions.length; i++) {
-    const transaction = transactions[i];
-    fJumlah = parseFloat(transaction.jumlah);
-    if (transaction.jenis === 'pemasukan') {
+  for (let i = 0; i < daftarTransaksi.length; i++) {
+    const transaksi = daftarTransaksi[i];
+    fJumlah = parseFloat(transaksi.jumlah);
+    if (transaksi.jenis === 'pemasukan') {
       totalPemasukan += fJumlah;
     } else {
       totalPengeluaran += fJumlah;
@@ -53,12 +55,12 @@ function updateBalance() {
 
 
 // Menampilkan daftar transaksi yang telah difilter pada tabel
-function updateTableWithTransactions(transactions) {
+function updateTabeldenganTransaksi(daftarTransaksi) {
   bodiTabel.innerHTML = '';
-  for (let i = 0; i < transactions.length; i++) {
-    const transaction = transactions[i];
-    const row = document.createElement('tr');
-    row.innerHTML = `<td>${transaction.jenis === 'pemasukan' ? 'Pemasukan' : 'Pengeluaran'}</td><td>${transaction.keterangan}</td><td>Rp ${parseFloat(transaction.jumlah).toLocaleString()}</td><td>${transaction.tanggal}</td><td><button onclick="deleteTransaction(${i})">Hapus</button></td>`;
+  for (let i = 0; i < daftarTransaksi.length; i++) {
+    const transaksi = daftarTransaksi[i];
+    const baris = document.createElement('tr');
+    baris.innerHTML = `<td>${transaksi.jenis === 'pemasukan' ? 'Pemasukan' : 'Pengeluaran'}</td><td>${transaksi.keterangan}</td><td>Rp ${parseFloat(transaksi.jumlah).toLocaleString()}</td><td>${transaksi.tanggal}</td><td><button onclick="hapusTransaksi(${transaksi.id})">Hapus</button></td>`;
     bodiTabel.appendChild(row);
   }
 }

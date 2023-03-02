@@ -3,7 +3,7 @@ const db = require("./db");
 // handlers.js
 exports.getDaftarTransaksi = async (req, res) => {
   try {
-    const [rows] = await db('SELECT id, DATE_FORMAT(tanggal, ?) as tanggal, jenis, jumlah, keterangan FROM transaksi', ['%d-%m-%Y']);
+    const [rows] = await db('SELECT id, tanggal, jenis, jumlah, keterangan FROM transaksi ORDER BY tanggal DESC');
     res.json(rows);
   } catch (err) {
     console.error(err);
@@ -11,7 +11,7 @@ exports.getDaftarTransaksi = async (req, res) => {
   }
 };
 
-exports.tambahTransaksi =  async (req, res) => {
+exports.tambahTransaksi = async (req, res) => {
   const { jenis, tanggal, jumlah, keterangan } = req.body;
   try {
     await db('INSERT INTO transaksi (jenis, tanggal, jumlah, keterangan) VALUES (?, ?, ?, ?)', [jenis, tanggal, jumlah, keterangan]);

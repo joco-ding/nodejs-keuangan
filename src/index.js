@@ -11,7 +11,7 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/api', routes);
 
 const port = 8080;
 app.listen(port, () => {
