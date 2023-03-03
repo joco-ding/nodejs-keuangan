@@ -39,7 +39,7 @@ async function ambilTransaksi() {
     if (response.ok) {
       const data = await response.json();
       daftarTransaksi = data;
-      updateTabel();
+      updateTabel(daftarTransaksi);
       updateSaldo();
       return
     }

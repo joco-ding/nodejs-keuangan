@@ -9,7 +9,6 @@ h1 {
 	margin-bottom: 20px;
 }
 
-
 #tabel-transaksi input, #tabel-transaksi select {
   width: 100%;
   padding: 8px 20px;
@@ -31,26 +30,25 @@ h1 {
 }
 
 #filter-container {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
+  display: flex;
+  margin: 0 auto;
+  max-width: 800px;
 	margin-bottom: 20px;
   padding: 20px;
 }
 
 #filter-container label {
 	flex: 0 0 100px;
-	margin-right: 10px;
+	padding: 10px;
 	font-weight: bold;
 }
 
-#filter-container select, #filter-container input {
+#filter-container input {
 	flex: 1 1 auto;
 	padding: 10px;
 	font-size: 16px;
-	border: none;
-	border-bottom: 2px solid #ccc;
-	margin-right: 20px;
+	border: 2px solid #ccc;
+  border-radius: 4px;
 }
 
 #tabel-transaksi {
@@ -73,16 +71,12 @@ h1 {
 	background-color: #f8f8f8;
 }
 
-#tabel-transaksi tbody tr:hover {
-	background-color: #eee;
-}
-
 #tabel-transaksi tfoot td {
 	font-weight: bold;
 	background-color: #f8f8f8;
 }
 
-#tabel-transaksi tfoot td:nth-child(2), #tabel-transaksi tfoot td:nth-child(5) {
+#tabel-transaksi tfoot td:nth-child(2) {
 	text-align: right;
 }
 

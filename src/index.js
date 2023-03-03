@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', routes);
 
-const port = 8080;
+const port = 8081;
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
