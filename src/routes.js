@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { tambahTransaksi, getDaftarTransaksi, hapusTransaksi } = require('./handlers');
+const { tambahTransaksi, daftarTransaksi, hapusTransaksi } = require('./handlers');
 
-router.get('/transaksi', getDaftarTransaksi);
+router.get('/transaksi', daftarTransaksi);
 router.post('/transaksi', tambahTransaksi);
 router.delete('/transaksi/:id', hapusTransaksi);
 

@@ -1,3 +1,19 @@
+// Mengambil daftar transaksi dari API
+async function ambilTransaksi() {
+  try {
+    const response = await fetch('/api/transaksi');
+    if (response.ok) {
+      const data = await response.json();
+      daftarTransaksi = data;
+      updateTabel(daftarTransaksi);
+      updateSaldo();
+      return
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
 // Menambahkan transaksi baru ke dalam daftar transaksi
 async function tambahTransaksi(transaksi) {
   try {
@@ -32,18 +48,3 @@ async function hapusTransaksi(id) {
   }
 }
 
-// Mengambil daftar transaksi dari API
-async function ambilTransaksi() {
-  try {
-    const response = await fetch('/api/transaksi');
-    if (response.ok) {
-      const data = await response.json();
-      daftarTransaksi = data;
-      updateTabel(daftarTransaksi);
-      updateSaldo();
-      return
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}

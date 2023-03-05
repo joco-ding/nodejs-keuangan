@@ -1,17 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-  ambilTransaksi();
-});
-
-// Menambahkan event listener pada kolom pencarian
-inputCari.addEventListener('input', function (event) {
-  const keyword = event.target.value.trim().replace(/\s+/g, "|");
-  const polaKeyword = new RegExp('(' + keyword + ')', 'i');
-  const filteredTransactions = daftarTransaksi.filter(transaksi => {
-    const gabunganData = transaksi.jenis + " " + transaksi.keterangan + " " + ubahTanggal(transaksi.tanggal)
-    return polaKeyword.test(gabunganData)
-  });
-  updateTabel(filteredTransactions);
-});
+document.addEventListener('DOMContentLoaded', ambilTransaksi);
 
 // Menambahkan event listener pada form
 formTransaksi.addEventListener('submit', function (event) {
@@ -26,4 +13,15 @@ formTransaksi.addEventListener('submit', function (event) {
   }
   tambahTransaksi({ jenis, keterangan, jumlah, tanggal });
   formTransaksi.reset();
+});
+
+// Menambahkan event listener pada kolom pencarian
+inputCari.addEventListener('input', function (event) {
+  const keyword = event.target.value.trim().replace(/\s+/g, "|");
+  const polaKeyword = new RegExp('(' + keyword + ')', 'i');
+  const filteredTransactions = daftarTransaksi.filter(transaksi => {
+    const gabunganData = transaksi.jenis + " " + transaksi.keterangan + " " + ubahTanggal(transaksi.tanggal)
+    return polaKeyword.test(gabunganData)
+  });
+  updateTabel(filteredTransactions);
 });

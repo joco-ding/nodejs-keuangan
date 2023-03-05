@@ -19,25 +19,6 @@ function ubahTanggal(tanggal) {
   return new Date(tanggal).toLocaleDateString('id-ID', opsiTanggal)
 }
 
-// Mengupdate tampilan saldo dan total pemasukan/pengeluaran
-function updateSaldo() {
-  let totalPemasukan = 0;
-  let totalPengeluaran = 0;
-  for (let i = 0; i < daftarTransaksi.length; i++) {
-    const transaksi = daftarTransaksi[i];
-    const fJumlah = parseFloat(transaksi.jumlah);
-    if (transaksi.jenis === 'pemasukan') {
-      totalPemasukan += fJumlah;
-    } else {
-      totalPengeluaran += fJumlah;
-    }
-  }
-  const saldo = totalPemasukan - totalPengeluaran;
-  elemenSaldo.innerHTML = `Rp ${saldo.toLocaleString()}`;
-  elementotalPemasukan.innerHTML = `Rp ${totalPemasukan.toLocaleString()}`;
-  elementotalPengeluaran.innerHTML = `Rp ${totalPengeluaran.toLocaleString()}`;
-}
-
 
 // Menampilkan daftar transaksi yang telah difilter pada tabel
 function updateTabel(daftarTransaksi) {
@@ -54,4 +35,23 @@ function updateTabel(daftarTransaksi) {
 `
     bodiTabel.appendChild(baris);
   }
+}
+
+// Mengupdate tampilan saldo dan total pemasukan/pengeluaran
+function updateSaldo() {
+  let totalPemasukan = 0;
+  let totalPengeluaran = 0;
+  for (let i = 0; i < daftarTransaksi.length; i++) {
+    const transaksi = daftarTransaksi[i];
+    const jumlah = parseFloat(transaksi.jumlah);
+    if (transaksi.jenis === 'pemasukan') {
+      totalPemasukan += jumlah;
+    } else {
+      totalPengeluaran += jumlah;
+    }
+  }
+  const saldo = totalPemasukan - totalPengeluaran;
+  elemenSaldo.innerHTML = `Rp ${saldo.toLocaleString()}`;
+  elementotalPemasukan.innerHTML = `Rp ${totalPemasukan.toLocaleString()}`;
+  elementotalPengeluaran.innerHTML = `Rp ${totalPengeluaran.toLocaleString()}`;
 }

@@ -10,10 +10,9 @@ cd nodejs-keuangan
 
 npm install
 
-## URL Demo
-
-belum tersedia
-
 ## Video Tutorial
 
-belum  tersedia
+Video tutorial-nya bisa dilihat di 
+[youtube](https://youtu.be/2S7ILBKK6gE). 
+Jika ada yang ingin ditanyakan silakan tinggalkan di 
+kolom komentar pada video nya.

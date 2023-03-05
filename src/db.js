@@ -11,10 +11,10 @@ const pool = mysql.createPool({
 
 exports.query = async (sql, values = []) => {
   try {
-    const conn = await pool.getConnection()
-    const rows = await conn.query(sql, values);
-    conn.release()
-    return rows
+    const koneksi = await pool.getConnection()
+    const barisData = await koneksi.query(sql, values);
+    koneksi.release()
+    return barisData
   } catch (error) {
     throw error
   }
