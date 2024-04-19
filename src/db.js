@@ -9,6 +9,10 @@ const pool = mysql.createPool({
   database: 'pengelolaan_keuangan'
 });
 
+pool.on('connection', conn => {
+  console.log('Database is connected')
+});
+
 exports.query = async (sql, values = []) => {
   try {
     const koneksi = await pool.getConnection()
